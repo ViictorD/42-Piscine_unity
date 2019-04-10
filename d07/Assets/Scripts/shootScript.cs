@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class shootScript : MonoBehaviour {
 
+    public AudioSource gunShot;
+    public AudioSource missShot;
+    public AudioSource hitShot;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -11,14 +15,18 @@ public class shootScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetMouseButtonDown(0))
-        {
-            // tire missile
-        }
-        else if (Input.GetMouseButtonDown(1))
-        {
-            Debug.Log("test");
-            // tire mitraillette
+		if (Input.GetMouseButtonDown(0))
+		{
+            // Audio
+            this.gunShot.Play();
+            // Particle on hit
+		}
+		else if (Input.GetMouseButtonDown(1))
+		{
+            // Check Ammo
+			// Audio
+            this.gunShot.Play();
+            // particle on hit
         }
 	}
 }
