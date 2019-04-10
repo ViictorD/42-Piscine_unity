@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Enemy
+  - bodyEnemy
+  - soundCollider
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - weapon
+  - character
+  - soundCollider
+  - map
+  - 'player '
+  - ennemy
+  - door
+  - doorStop
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: UI
+    uniqueID: 2475475027
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: ground
+    uniqueID: 2923505015
+    locked: 0
+  - name: map
+    uniqueID: 1360098417
+    locked: 0
+  - name: character
+    uniqueID: 2884622821
+    locked: 0
+  - name: gui
+    uniqueID: 1400770797
+    locked: 0
