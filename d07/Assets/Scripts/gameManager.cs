@@ -6,6 +6,7 @@ public class gameManager : MonoBehaviour {
 
     public static gameManager instance;
     public AudioSource bgMusic;
+	public List<GameObject> enemy;
 
 	// Use this for initialization
 	void Start () {

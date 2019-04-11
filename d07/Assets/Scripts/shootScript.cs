@@ -47,8 +47,8 @@ public class shootScript : MonoBehaviour {
             {
                 this.missShotParticle.transform.position = ray.point;
                 this.missShotParticle.Play();
-                this.missShot.Play();
             }
+			this.missShot.Play();
         }
 	}
 }
