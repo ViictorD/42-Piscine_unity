@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class tankMovement : MonoBehaviour {
+public class tankMovement : tank {
 
 
     public int nitro = 100;

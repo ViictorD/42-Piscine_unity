@@ -5,7 +5,6 @@ using UnityEngine;
 public class shootScript : MonoBehaviour {
 
     public AudioSource gunShot;
-    public AudioSource hitShot;
     public AudioSource missShot;
     public ParticleSystem gunShotParticle;
     public ParticleSystem missileShotParticle;
@@ -31,6 +30,8 @@ public class shootScript : MonoBehaviour {
                 this.missShotParticle.transform.position = ray.point;
                 this.missShotParticle.Play();
                 this.missShot.Play();
+				if (ray.collider.gameObject.tag == "Enemy")
+					ray.collider.gameObject.GetComponent<tank>().getHit(15);
             }
 		}
 		else if (Input.GetMouseButtonDown(1))
@@ -47,6 +48,8 @@ public class shootScript : MonoBehaviour {
             {
                 this.missShotParticle.transform.position = ray.point;
                 this.missShotParticle.Play();
+				if (ray.collider.gameObject.tag == "Enemy")
+					ray.collider.gameObject.GetComponent<tank>().getHit(30);
             }
 			this.missShot.Play();
         }

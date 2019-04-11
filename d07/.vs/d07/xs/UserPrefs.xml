@@ -1,11 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/gameManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/shootScript.cs">
     <Files>
-      <File FileName="Assets/Scripts/enemyScript.cs" Line="32" Column="6" />
-      <File FileName="Assets/Scripts/gameManager.cs" Line="18" Column="18" />
+      <File FileName="Assets/Scripts/enemyScript.cs" Line="30" Column="11" />
+      <File FileName="Assets/Scripts/tank.cs" Line="42" Column="61" />
       <File FileName="Assets/Scripts/mouseMouvement.cs" Line="21" Column="1" NotebookId="1" />
-      <File FileName="Assets/Scripts/tankMovement.cs" Line="71" Column="44" NotebookId="1" />
-      <File FileName="Assets/Scripts/shootScript.cs" Line="39" Column="24" NotebookId="1" />
+      <File FileName="Assets/Scripts/tankMovement.cs" Line="5" Column="33" NotebookId="1" />
+      <File FileName="Assets/Scripts/shootScript.cs" Line="20" Column="18" NotebookId="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

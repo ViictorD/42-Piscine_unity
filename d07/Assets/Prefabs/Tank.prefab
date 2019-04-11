@@ -19,7 +19,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4255556652617130}
-  - component: {fileID: 82789235530206658}
   - component: {fileID: 82937775963155914}
   - component: {fileID: 114308738780384752}
   - component: {fileID: 114622306572431856}
@@ -93,9 +92,11 @@ GameObject:
   - component: {fileID: 143689088976542602}
   - component: {fileID: 114366287865129394}
   - component: {fileID: 82422065822413078}
+  - component: {fileID: 135424761807389996}
+  - component: {fileID: 82231066611773320}
   m_Layer: 0
   m_Name: Tank
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -311,7 +312,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1861328528437676}
   m_Mesh: {fileID: 4300000, guid: 3c66b355fdb144b8dabb5e4a3995e596, type: 3}
---- !u!82 &82422065822413078
+--- !u!82 &82231066611773320
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -320,8 +321,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 849499fe474104be897295a49a5846b0, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 82bbdcfd095cb44db855bfeb4bf8c38d, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -378,7 +379,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 0
+    m_RotationOrder: 4
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -391,17 +392,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!82 &82789235530206658
+--- !u!82 &82422065822413078
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1323462811012464}
+  m_GameObject: {fileID: 1735290578734548}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 82bbdcfd095cb44db855bfeb4bf8c38d, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 849499fe474104be897295a49a5846b0, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -458,7 +459,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -481,7 +482,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 38ba946f2eace4f6780dcad68c26581f, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -574,7 +575,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bgMusic: {fileID: 82422065822413078}
-  enemy: []
+  enemy:
+  - {fileID: 1735290578734548}
 --- !u!114 &114374107167357184
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -586,6 +588,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5459d6f331c8f4967a7694bf9105db50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  life: 150
+  mitrailletteDamage: 10
+  missileDamage: 30
+  explosion: {fileID: 82231066611773320}
   nitro: 100
   speed: 10
 --- !u!114 &114622306572431856
@@ -600,12 +606,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunShot: {fileID: 82937775963155914}
-  hitShot: {fileID: 82789235530206658}
   missShot: {fileID: 0}
   gunShotParticle: {fileID: 198826789840891526}
   missileShotParticle: {fileID: 198627221140076114}
   missShotParticle: {fileID: 0}
   missileCount: 5
+--- !u!135 &135424761807389996
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1735290578734548}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.29
+  m_Center: {x: 0, y: 0.98, z: 0}
 --- !u!143 &143689088976542602
 CharacterController:
   m_ObjectHideFlags: 1
@@ -635,7 +652,7 @@ ParticleSystem:
   stopAction: 0
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
