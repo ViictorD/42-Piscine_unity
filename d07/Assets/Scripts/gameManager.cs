@@ -5,13 +5,11 @@ using UnityEngine;
 public class gameManager : MonoBehaviour {
 
     public static gameManager instance;
-    public AudioSource bgMusic;
 	public List<GameObject> enemy;
 
 	// Use this for initialization
 	void Start () {
         instance = this;
-        this.bgMusic.PlayScheduled(this.bgMusic.clip.length);
 	}
 	
 	// Update is called once per frame

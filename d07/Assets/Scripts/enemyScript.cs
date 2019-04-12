@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using System;
+using UnityEngine.UI;
 
 public class enemyScript : tank {
 
@@ -10,6 +11,8 @@ public class enemyScript : tank {
 	public AudioSource shotHit;
 	public ParticleSystem gunShotParticle;
 	public ParticleSystem hitShotParticle;
+	public Text missileText;
+
 
 	private GameObject target = null;
 	private bool isInRange = false;
@@ -22,6 +25,8 @@ public class enemyScript : tank {
 	void Start () {
 		this.navMesh = GetComponent<NavMeshAgent>();
 		this.timeShot = DateTime.Now;
+		this.missileText.text = "0 ✐";
+		this.lifeText.text = this.life + " ❤";
 	}
 	
 	// Update is called once per frame
@@ -81,7 +86,7 @@ public class enemyScript : tank {
 		float distance = 9999999;
 		foreach (GameObject g in gameManager.instance.enemy)
 		{
-			if (g == null || g == this.gameObject)
+			if (g == null || g == this.gameObject || g.GetComponent<tank>().isDead)
 				continue;
 			float d = Vector3.Distance(g.transform.position, transform.position);
 			if (d < distance)

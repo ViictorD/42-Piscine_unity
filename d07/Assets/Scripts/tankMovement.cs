@@ -16,6 +16,7 @@ public class tankMovement : tank {
 	// Use this for initialization
 	void Start () {
         this.cc = GetComponent<CharacterController>();
+		this.lifeText.text = this.life + " ❤";
 	}
 	
 	// Update is called once per frame

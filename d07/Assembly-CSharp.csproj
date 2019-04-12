@@ -54,6 +54,7 @@
      <Compile Include="Assets\Scripts\cameraScript.cs" />
      <Compile Include="Assets\Scripts\enemyScript.cs" />
      <Compile Include="Assets\Scripts\gameManager.cs" />
+     <Compile Include="Assets\Scripts\lookCamera.cs" />
      <Compile Include="Assets\Scripts\mouseMouvement.cs" />
      <Compile Include="Assets\Scripts\shootScript.cs" />
      <Compile Include="Assets\Scripts\tank.cs" />
