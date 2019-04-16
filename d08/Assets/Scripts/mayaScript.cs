@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class mayaScript : MonoBehaviour {
+public class mayaScript : Character {
 
 	enum characterState { IDLE, RUN, ATTACK, DIE };
 
 	private Animator animator;
 	private NavMeshAgent navMesh;
 	private characterState state;
-
+	GameObject target;
 
 	// Use this for initialization
 	void Start () {
@@ -26,18 +26,45 @@ public class mayaScript : MonoBehaviour {
 			RaycastHit ray;
 			if (Physics.Raycast(r, out ray))
 			{
-				// Mettre une rotation du perso vers la ou on a clique
+				if (ray.transform.gameObject.tag == "Enemy")
+					this.target = ray.transform.gameObject;
+				else
+					this.target = null;
 				this.navMesh.destination = ray.point;
 				this.animator.SetTrigger("mayaRun");
 				this.state = characterState.RUN;
 			}
-			
-
 		}
+
 		if (this.state == characterState.RUN && this.navMesh.destination == transform.position)
 		{
 			this.animator.SetTrigger("mayaIdle");
 			this.state = characterState.IDLE;
+		}
+
+		if (this.state == characterState.RUN && this.target != null)
+		{
+			if (Vector3.Distance(this.target.transform.position, gameManager.instance.player.transform.position) < 2)
+			{
+
+				// Mettre l'attaque dans une coroutine
+				// Oublie pas de remetre dans le prefab enemy
+				this.navMesh.destination = transform.position;
+				transform.LookAt(this.target.transform);
+				this.animator.SetTrigger("mayaAttack");
+				this.state = characterState.ATTACK;
+			}
+			else
+				this.navMesh.destination = this.target.transform.position;
+		}
+
+	}
+
+	public void getHit()
+	{
+		if (--this.life <= 0)
+		{
+			// dead
 		}
 	}
 }
