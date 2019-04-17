@@ -64,7 +64,6 @@ public class enemyScript : Character {
 
 	public void getHit()
 	{
-		Debug.Log("NOW");
 		if (--this.life <= 0)
 		{
 			this.isDead = true;
@@ -74,12 +73,19 @@ public class enemyScript : Character {
 				this.isAttacking = false;
 			}
 			this.animator.SetTrigger("EnemyDeath");
-			Invoke("death", 3.3f);
+			StartCoroutine(this.death());
 		}
 	}
 
-	void death()
+	IEnumerator death()
 	{
+		Destroy(this.nm);
+		yield return new WaitForSeconds(5.3f); // temps animation + 2 sec
+		while (transform.position.y > 12)
+		{
+			transform.Translate(new Vector3(0, -0.05f, 0));
+			yield return new WaitForSeconds(0.1f);
+		}
 		Destroy(gameObject);
 	}
 }

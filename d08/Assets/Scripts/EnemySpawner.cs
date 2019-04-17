@@ -16,7 +16,7 @@ public class EnemySpawner : MonoBehaviour {
 	void Start () {
 		this.currentEnemy = new GameObject[this.posSpawn.Count];
 		for (int i = 0; i < this.posSpawn.Count; i++)
-			this.currentEnemy[i] = Instantiate(this.maleEnemy, this.posSpawn[i].transform.position, Quaternion.identity);
+			this.currentEnemy[i] = Instantiate(Random.Range(0, 2) < 1 ? this.maleEnemy : this.femaleEnemy, this.posSpawn[i].transform.position, Quaternion.identity);
 	}
 	
 	// Update is called once per frame
@@ -35,7 +35,7 @@ public class EnemySpawner : MonoBehaviour {
 		{
 			if (this.currentEnemy[i] == null)
 			{
-				this.currentEnemy[i] = Instantiate(this.maleEnemy, this.posSpawn[i].transform.position, Quaternion.identity);
+				this.currentEnemy[i] = Instantiate(Random.Range(0, 2) < 1 ? this.maleEnemy : this.femaleEnemy, this.posSpawn[i].transform.position, Quaternion.identity);
 				return;
 			}
 		}
