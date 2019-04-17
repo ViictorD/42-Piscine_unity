@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class enemyScript : Character {
 
+	public bool isDead = false;
 	private Animator animator;
 	NavMeshAgent nm;
 	Coroutine attack;
@@ -19,6 +20,8 @@ public class enemyScript : Character {
 	
 	// Update is called once per frame
 	void Update () {
+		if (isDead)
+			return;
 		float distance = Vector3.Distance(transform.position, gameManager.instance.player.transform.position);
 		if (this.runToPlayer)
 		{
@@ -59,10 +62,17 @@ public class enemyScript : Character {
 		}
 	}
 
-	void getHit()
+	public void getHit()
 	{
+		Debug.Log("NOW");
 		if (--this.life <= 0)
 		{
+			this.isDead = true;
+			if (this.isAttacking)
+			{
+				StopCoroutine(this.attack);
+				this.isAttacking = false;
+			}
 			this.animator.SetTrigger("EnemyDeath");
 			Invoke("death", 3.3f);
 		}

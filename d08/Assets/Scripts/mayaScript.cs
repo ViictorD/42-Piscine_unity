@@ -44,20 +44,28 @@ public class mayaScript : Character {
 
 		if (this.state == characterState.RUN && this.target != null)
 		{
-			if (Vector3.Distance(this.target.transform.position, gameManager.instance.player.transform.position) < 2)
+			if (Vector3.Distance(this.target.transform.position, gameManager.instance.player.transform.position) < 2
+			    && this.state != characterState.ATTACK)
 			{
-
-				// Mettre l'attaque dans une coroutine
-				// Oublie pas de remetre dans le prefab enemy
+				Debug.Log("Test"); // call plein de fois
 				this.navMesh.destination = transform.position;
-				transform.LookAt(this.target.transform);
-				this.animator.SetTrigger("mayaAttack");
 				this.state = characterState.ATTACK;
+				StartCoroutine(this.attackRoutine());
+				// Oublie pas de remetre dans le prefab enemy
 			}
 			else
 				this.navMesh.destination = this.target.transform.position;
 		}
+	}
 
+	IEnumerator attackRoutine()
+	{
+		transform.LookAt(this.target.transform);
+		this.animator.SetTrigger("mayaAttack");
+		yield return new WaitForSeconds(0.5f);
+		this.target.GetComponent<enemyScript>().getHit();
+		yield return new WaitForSeconds(1f);
+		this.animator.SetTrigger("mayaIdle");
 	}
 
 	public void getHit()
